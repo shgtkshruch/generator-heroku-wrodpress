@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vbguest.auto_update = false
+
+  config.vm.define "dev" do |dev|
+    dev.vm.box = "chef/centos-6.5"
+    dev.vm.box_url = "(virtualbox,"
+    dev.vm.network "private_network", ip: "192.168.33.10"
+    dev.vm.synced_folder "wordpress", "/var/www/html/wordpress"
+
+    dev.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/playbook.yml"
+      ansible.sudo = false
+      ansible.extra_vars = {
+        env: "local",
+        owner: "vagrant"
+      }
+    end
+  end
+
+  config.push.define "heroku" do |push|
+    push.app = "shgtkshruch-wordpress"
+    push.dir = "wordpress"
+  end
+end

@@ -1,0 +1,29 @@
+{
+  "name": "generator-heroku-wrodpress",
+  "version": "0.0.0",
+  "description": "Yeoman generator for heroku WordPress",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shgtkshruch/generator-heroku-wrodpress.git"
+  },
+  "keywords": [
+    "generator"
+  ],
+  "author": "shgtkshruch <shgtkshruch@gmail.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/shgtkshruch/generator-heroku-wrodpress/issues"
+  },
+  "homepage": "https://github.com/shgtkshruch/generator-heroku-wrodpress#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.20.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "yeoman-assert": "^2.0.0"
+  }
+}
