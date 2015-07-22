@@ -33,5 +33,6 @@ describe('heroku-wordpress generator', function () {
     ]);
 
     assert.fileContent('ansible/group_vars/all', 'vagrant_ip: 192.168.33.10');
+    assert.fileContent('Vagrantfile', 'ip: "192.168.33.10"');
   });
 });

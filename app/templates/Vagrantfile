@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "dev" do |dev|
     dev.vm.box = "chef/centos-6.5"
     dev.vm.box_url = "(virtualbox,"
-    dev.vm.network "private_network", ip: "192.168.33.10"
+    dev.vm.network "private_network", ip: "<%= vagrantIp %>"
     dev.vm.synced_folder "wordpress", "/var/www/html/wordpress"
 
     dev.vm.provision "ansible" do |ansible|
