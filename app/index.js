@@ -1,4 +1,5 @@
 var generators = require('yeoman-generator');
+var mkdirp = require('mkdirp');
 
 module.exports = generators.Base.extend({
   git: function () {
@@ -13,5 +14,10 @@ module.exports = generators.Base.extend({
   ansible: function () {
     this.directory('ansible', 'ansible');
     this.template('ansible/group_vars/all', 'ansible/group_vars/all');
+  },
+
+  wordpress: function () {
+    mkdirp('wordpress');
   }
+
 });

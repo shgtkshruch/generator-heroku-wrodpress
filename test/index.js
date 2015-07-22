@@ -13,6 +13,7 @@ describe('heroku-wordpress generator', function () {
     assert.file([
       '.gitignore',
       'Vagrantfile',
+      'wordpress',
       'ansible/playbook.yml',
       'ansible/group_vars/all',
       'ansible/roles/apache/tasks/main.yml',
