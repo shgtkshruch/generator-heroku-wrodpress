@@ -2,7 +2,7 @@
 - name: Install peco
   get_url:
     url=https://github.com/peco/peco/releases/download/v{{ peco_version }}/peco_linux_amd64.tar.gz
-    dest=/home/{{ owner }}/peco_linux_amd64.tar.gz
+    dest=/home/vagrant/peco_linux_amd64.tar.gz
 
 - name: Untar
   command: /bin/tar xvf peco_linux_amd64.tar.gz
@@ -23,5 +23,5 @@
 - name: Copy config file
   copy:
     src=config.json
-    dest=/home/{{ owner }}/.peco/
+    dest=/home/vagrant/peco/
 

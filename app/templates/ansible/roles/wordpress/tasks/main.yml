@@ -36,7 +36,7 @@
   template: src=wp-config.php dest=/var/www/html/wordpress
 
 - name: Change ownership of Wordpress installation
-  file: path=/var/www/html/wordpress/ owner={{ owner }} group={{ owner }} state=directory recurse=yes
+  file: path=/var/www/html/wordpress/ owner=vagrant group=vagrant state=directory recurse=yes
 
 - name: Install with wp-cli
   command: wp core install --title={{ wp_title }} --admin_user={{ wp_user }} --admin_password={{ wp_password }} --admin_email={{ wp_mail }} --url={{ vagrant_ip }}/wordpress

@@ -21,6 +21,6 @@
   copy:
     src=bash_profile
     dest=~/.bash_profile
-    group={{ owner }}
-    owner={{ owner }}
+    group=vagrant
+    owner=vagrant
   sudo: no

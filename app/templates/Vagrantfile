@@ -16,9 +16,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dev.vm.provision "ansible" do |ansible|
       ansible.playbook = "ansible/playbook.yml"
       ansible.sudo = false
-      ansible.extra_vars = {
-        owner: "vagrant"
-      }
     end
   end
 
