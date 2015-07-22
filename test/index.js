@@ -14,6 +14,8 @@ describe('heroku-wordpress generator', function () {
       '.gitignore',
       'Vagrantfile',
       'wordpress',
+      'wordpress/.htaccess',
+      'wordpress/conf/nginx.conf.erb',
       'ansible/playbook.yml',
       'ansible/group_vars/all',
       'ansible/roles/apache/tasks/main.yml',
