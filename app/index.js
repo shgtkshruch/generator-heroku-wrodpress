@@ -2,6 +2,22 @@ var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 
 module.exports = generators.Base.extend({
+  prompting: function () {
+    var done = this.async();
+
+    var prompts = [{
+      type: 'input',
+      name: 'themeName',
+      message: 'What is your theme name?',
+      value: 'themeName'
+    }];
+
+    this.prompt(prompts, function(answers) {
+      this.themeName = answers.themeName;
+      done();
+    }.bind(this));
+  },
+
   git: function () {
     this.copy('gitignore', '.gitignore');
   },
@@ -18,12 +34,16 @@ module.exports = generators.Base.extend({
 
   wordpress: function () {
     mkdirp('wordpress');
+    mkdirp('wordpress/wp-content/themes/' + this.themeName);
     this.copy('htaccess', 'wordpress/.htaccess');
     mkdirp('wordpress/conf');
     this.fs.copy(
       this.templatePath('nginx.conf.erb'),
       this.destinationPath('wordpress/conf/nginx.conf.erb')
     );
-  }
+  },
 
+  gulp: function () {
+    this.copy('gulpfile.js', 'gulpfile.js');
+  }
 });

@@ -3,9 +3,11 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-assert');
 
 describe('heroku-wordpress generator', function () {
+
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, 'temp'))
+      .withPrompts({themeName: 'test-press'})
       .on('end', done);
   });
 
@@ -13,6 +15,7 @@ describe('heroku-wordpress generator', function () {
     assert.file([
       '.gitignore',
       'Vagrantfile',
+      'gulpfile.js',
       'wordpress',
       'wordpress/.htaccess',
       'wordpress/conf/nginx.conf.erb',
@@ -36,5 +39,6 @@ describe('heroku-wordpress generator', function () {
 
     assert.fileContent('ansible/group_vars/all', 'vagrant_ip: 192.168.33.10');
     assert.fileContent('Vagrantfile', 'ip: "192.168.33.10"');
+    assert.fileContent('gulpfile.js', "dest: 'wordpress/wp-content/themes/test-press");
   });
 });
