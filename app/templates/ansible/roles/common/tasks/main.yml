@@ -14,9 +14,6 @@
     - git
     - libselinux-python
 
-- name: Disabled selinux
-  selinux: state=disabled
-
 - name: Copy bash_profile
   copy:
     src=bash_profile

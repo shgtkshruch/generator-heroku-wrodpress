@@ -32,6 +32,9 @@
     host='localhost'
     state=present
 
+- name: Disble SELinux
+  selinux: state=disabled
+
 - name: Copy Wordpress config file
   template: src=wp-config.php dest=/var/www/html/wordpress
 
