@@ -33,10 +33,8 @@ module.exports = generators.Base.extend({
   },
 
   wordpress: function () {
-    mkdirp('wordpress');
     mkdirp('wordpress/wp-content/themes/' + this.themeName);
     this.copy('htaccess', 'wordpress/.htaccess');
-    mkdirp('wordpress/conf');
     this.fs.copy(
       this.templatePath('nginx.conf.erb'),
       this.destinationPath('wordpress/conf/nginx.conf.erb')
