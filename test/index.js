@@ -10,7 +10,10 @@ describe('heroku-wordpress generator', function () {
       .withOptions({
         'skip-install': true
       })
-      .withPrompts({themeName: 'test-press'})
+      .withPrompts({
+        themeName: 'test-press',
+        herokuAppName: 'shgtkshruch-test-press',
+      })
       .on('end', done);
   });
 
@@ -48,6 +51,7 @@ describe('heroku-wordpress generator', function () {
 
     assert.fileContent('ansible/group_vars/all', 'vagrant_ip: 192.168.33.10');
     assert.fileContent('Vagrantfile', 'ip: "192.168.33.10"');
+    assert.fileContent('Vagrantfile', 'push.app = "shgtkshruch-test-press"');
     assert.fileContent('gulpfile.js', "dest: 'wordpress/wp-content/themes/test-press");
     assert.fileContent('package.json', '"name": "temp"');
     assert.fileContent('src/styles/style.scss', 'Theme Name: test-press');

@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.push.define "heroku" do |push|
-    push.app = "shgtkshruch-wordpress"
+    push.app = "<%= herokuAppName %>"
     push.dir = "wordpress"
   end
 end

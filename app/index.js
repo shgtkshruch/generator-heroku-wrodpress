@@ -11,10 +11,16 @@ module.exports = generators.Base.extend({
       name: 'themeName',
       message: 'What is your theme name?',
       value: 'themeName'
+    }, {
+      type: 'input',
+      name: 'herokuAppName',
+      message: 'What is your heroku app name?',
+      value: 'herokuAppName'
     }];
 
     this.prompt(prompts, function(answers) {
       this.themeName = answers.themeName;
+      this.herokuAppName = answers.herokuAppName;
       done();
     }.bind(this));
   },
