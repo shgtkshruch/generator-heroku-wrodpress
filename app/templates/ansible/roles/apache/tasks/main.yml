@@ -2,3 +2,11 @@
 - name: Install Apache
   yum: name=httpd
   notify: restart httpd
+
+- name: Copy httpd.conf
+  copy:
+    src=httpd.conf
+    dest=/etc/httpd/conf/httpd.conf
+    group=root
+    owner=root
+
