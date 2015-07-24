@@ -16,6 +16,11 @@ describe('heroku-wordpress generator', function () {
       '.gitignore',
       'Vagrantfile',
       'gulpfile.js',
+      'src/index.php',
+      'src/header.php',
+      'src/footer.php',
+      'src/styles/style.scss',
+      'src/functions.php',
       'wordpress',
       'wordpress/.htaccess',
       'wordpress/conf/nginx.conf.erb',
@@ -40,5 +45,6 @@ describe('heroku-wordpress generator', function () {
     assert.fileContent('ansible/group_vars/all', 'vagrant_ip: 192.168.33.10');
     assert.fileContent('Vagrantfile', 'ip: "192.168.33.10"');
     assert.fileContent('gulpfile.js', "dest: 'wordpress/wp-content/themes/test-press");
+    assert.fileContent('src/styles/style.scss', 'Theme Name: test-press');
   });
 });

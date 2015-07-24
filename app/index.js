@@ -43,6 +43,14 @@ module.exports = generators.Base.extend({
     );
   },
 
+  app: function () {
+    this.copy('index.php', 'src/index.php');
+    this.copy('header.php', 'src/header.php');
+    this.copy('footer.php', 'src/footer.php');
+    this.template('style.scss', 'src/styles/style.scss');
+    this.copy('functions.php', 'src/functions.php');
+  },
+
   gulp: function () {
     this.copy('gulpfile.js', 'gulpfile.js');
   }
