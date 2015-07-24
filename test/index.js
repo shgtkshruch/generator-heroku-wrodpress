@@ -8,7 +8,9 @@ describe('heroku-wordpress generator', function () {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, 'temp'))
       .withOptions({
-        'skip-install': true
+        'skip-install': true,
+        'skip-vagrant': true,
+        'skip-heroku': true
       })
       .withPrompts({
         themeName: 'test-press',

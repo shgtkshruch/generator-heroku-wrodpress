@@ -67,5 +67,23 @@ module.exports = generators.Base.extend({
       npm: true,
       skipInstall: this.options['skip-install']
     });
+  },
+
+  end: function () {
+
+    if (!this.options['skip-vagrant']) {
+      this.spawnCommandSync('vagrant', ['up']);
+    }
+
+    if (!this.options['skip-heroku']) {
+      this.spawnCommandSync(
+        'heroku',
+        ['create', this.herokuAppName, '-s', 'cedar', '-b', 'git://github.com/iphoting/heroku-buildpack-php-tyler.git']
+      );
+      this.spawnCommandSync(
+        'heroku',
+        ['addons:create', 'cleardb:ignite', '-a', this.herokuAppName]
+      );
+    }
   }
 });
