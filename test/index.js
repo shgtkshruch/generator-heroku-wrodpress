@@ -7,6 +7,9 @@ describe('heroku-wordpress generator', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, 'temp'))
+      .withOptions({
+        'skip-install': true
+      })
       .withPrompts({themeName: 'test-press'})
       .on('end', done);
   });
@@ -15,6 +18,7 @@ describe('heroku-wordpress generator', function () {
     assert.file([
       '.gitignore',
       'Vagrantfile',
+      'package.json',
       'gulpfile.js',
       'src/index.php',
       'src/header.php',
@@ -45,6 +49,7 @@ describe('heroku-wordpress generator', function () {
     assert.fileContent('ansible/group_vars/all', 'vagrant_ip: 192.168.33.10');
     assert.fileContent('Vagrantfile', 'ip: "192.168.33.10"');
     assert.fileContent('gulpfile.js', "dest: 'wordpress/wp-content/themes/test-press");
+    assert.fileContent('package.json', '"name": "temp"');
     assert.fileContent('src/styles/style.scss', 'Theme Name: test-press');
   });
 });

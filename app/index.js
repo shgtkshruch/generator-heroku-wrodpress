@@ -1,5 +1,6 @@
 var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
+var _s = require('underscore.string');
 
 module.exports = generators.Base.extend({
   prompting: function () {
@@ -50,6 +51,15 @@ module.exports = generators.Base.extend({
   },
 
   gulp: function () {
+    this.template('package.json', 'package.json', {name: _s.slugify(this.appname)});
     this.copy('gulpfile.js', 'gulpfile.js');
+  },
+
+  install: function () {
+    this.installDependencies({
+      bower: false,
+      npm: true,
+      skipInstall: this.options['skip-install']
+    });
   }
 });

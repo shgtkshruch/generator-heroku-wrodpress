@@ -1,0 +1,17 @@
+{
+  "name": "<%= name %>",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-coffee": "*",
+    "gulp-sass": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-plumber": "*",
+    "gulp-changed": "*",
+    "gulp-load-plugins": "*",
+    "browser-sync": "*"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  }
+}
+
